@@ -307,6 +307,12 @@ import { Popover } from 'boundless';
   ---     | ---
   `object` | `{}`
 
+- __`matchAnchorWidth`__ &middot; if popover element should match the anchor
+
+  Expects | Default Value
+  ---     | ---
+  `bool` | `false`
+
 - __`onClose`__ &middot; a custom event handler that is called to indicate that the dialog should be unrendered by its parent; the event occurs if one or more of the "closeOn" props (`closeOnEscKey`, `closeOnOutsideClick`, etc.) are passed as `true` and the dismissal criteria are satisfied
 
   Expects | Default Value
