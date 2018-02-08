@@ -10,12 +10,12 @@ import transformProp from 'boundless-utils-transform-property';
 
 function getOppositeCardinal(direction) {
     switch (direction[0]) {
-    case 'N':
-        return 'S';
-    case 'S':
-        return 'N';
-    case 'E':
-        return 'W';
+        case 'N':
+            return 'S';
+        case 'S':
+            return 'N';
+        case 'E':
+            return 'W';
     }
 
     return 'E';
@@ -39,18 +39,18 @@ const MIDDLE = 1;
 const END = 2;
 
 const combinations = [
-    { name: 'NNW',   ax: START,     ay: START,      dx: START,   dy: END },
-    { name: 'N',     ax: MIDDLE,    ay: START,      dx: MIDDLE,  dy: END },
-    { name: 'NNE',   ax: END,       ay: START,      dx: END,     dy: END },
-    { name: 'ENE',   ax: END,       ay: START,      dx: START,   dy: START },
-    { name: 'E',     ax: END,       ay: MIDDLE,     dx: START,   dy: MIDDLE },
-    { name: 'ESE',   ax: END,       ay: END,        dx: START,   dy: END },
-    { name: 'SSE',   ax: END,       ay: END,        dx: END,     dy: START },
-    { name: 'S',     ax: MIDDLE,    ay: END,        dx: MIDDLE,  dy: START },
-    { name: 'SSW',   ax: START,     ay: END,        dx: START,   dy: START },
-    { name: 'WSW',   ax: START,     ay: END,        dx: END,     dy: END },
-    { name: 'W',     ax: START,     ay: MIDDLE,     dx: END,     dy: MIDDLE },
-    { name: 'WNW',   ax: START,     ay: START,      dx: END,     dy: START },
+    { name: 'NNW', ax: START, ay: START, dx: START, dy: END },
+    { name: 'N', ax: MIDDLE, ay: START, dx: MIDDLE, dy: END },
+    { name: 'NNE', ax: END, ay: START, dx: END, dy: END },
+    { name: 'ENE', ax: END, ay: START, dx: START, dy: START },
+    { name: 'E', ax: END, ay: MIDDLE, dx: START, dy: MIDDLE },
+    { name: 'ESE', ax: END, ay: END, dx: START, dy: END },
+    { name: 'SSE', ax: END, ay: END, dx: END, dy: START },
+    { name: 'S', ax: MIDDLE, ay: END, dx: MIDDLE, dy: START },
+    { name: 'SSW', ax: START, ay: END, dx: START, dy: START },
+    { name: 'WSW', ax: START, ay: END, dx: END, dy: END },
+    { name: 'W', ax: START, ay: MIDDLE, dx: END, dy: MIDDLE },
+    { name: 'WNW', ax: START, ay: START, dx: END, dy: START },
 ];
 
 /**
@@ -169,14 +169,14 @@ export default class Popover extends PureComponent {
 
     static getAlignmentClassFragment(constant) {
         switch (constant) {
-        case START:
-            return 'start';
+            case START:
+                return 'start';
 
-        case MIDDLE:
-            return 'middle';
+            case MIDDLE:
+                return 'middle';
 
-        case END:
-            return 'end';
+            case END:
+                return 'end';
         }
     }
 
@@ -225,23 +225,23 @@ export default class Popover extends PureComponent {
         let nextX = this.anchorRect.left + this.bodyLeft;
 
         switch (ax) {
-        case MIDDLE:
-            nextX += this.anchorRect.width / 2;
-            break;
+            case MIDDLE:
+                nextX += this.anchorRect.width / 2;
+                break;
 
-        case END:
-            nextX += this.anchorRect.width;
-            break;
+            case END:
+                nextX += this.anchorRect.width;
+                break;
         }
 
         switch (dx) {
-        case MIDDLE:
-            nextX -= dialog.clientWidth / 2;
-            break;
+            case MIDDLE:
+                nextX -= dialog.clientWidth / 2;
+                break;
 
-        case END:
-            nextX -= dialog.clientWidth;
-            break;
+            case END:
+                nextX -= dialog.clientWidth;
+                break;
         }
 
         return nextX;
@@ -251,23 +251,23 @@ export default class Popover extends PureComponent {
         let nextY = this.anchorRect.top + this.bodyTop;
 
         switch (ay) {
-        case MIDDLE:
-            nextY += this.anchorRect.height / 2;
-            break;
+            case MIDDLE:
+                nextY += this.anchorRect.height / 2;
+                break;
 
-        case END:
-            nextY += this.anchorRect.height;
-            break;
+            case END:
+                nextY += this.anchorRect.height;
+                break;
         }
 
         switch (dy) {
-        case MIDDLE:
-            nextY -= dialog.clientHeight / 2;
-            break;
+            case MIDDLE:
+                nextY -= dialog.clientHeight / 2;
+                break;
 
-        case END:
-            nextY -= dialog.clientHeight;
-            break;
+            case END:
+                nextY -= dialog.clientHeight;
+                break;
         }
 
         return nextY;
@@ -298,16 +298,16 @@ export default class Popover extends PureComponent {
 
             if (ax === START) {
                 return !(
-                       (this.anchorRect.left + pWidth > window.innerWidth      /* would occlude right */ || this.anchorRect.left < 0)                               /* anchor is partially offscreen to the left */
+                    (this.anchorRect.left + pWidth > window.innerWidth      /* would occlude right */ || this.anchorRect.left < 0)                               /* anchor is partially offscreen to the left */
                 );
             } else if (ax === MIDDLE) {
                 return !(
-                       (this.anchorRect.left - pWidth / 2 < 0                  /* would occlude left */ || this.anchorRect.left + pWidth / 2 > window.innerWidth)  /* would occlude right */
+                    (this.anchorRect.left - pWidth / 2 < 0                  /* would occlude left */ || this.anchorRect.left + pWidth / 2 > window.innerWidth)  /* would occlude right */
                 );
             }
 
             return !(
-                   (this.anchorRect.left - pWidth < 0                  /* would occlude left */ || this.anchorRect.right > window.innerWidth)          /* anchor is partially offscreen to the right */
+                (this.anchorRect.left - pWidth < 0                  /* would occlude left */ || this.anchorRect.right > window.innerWidth)          /* anchor is partially offscreen to the right */
             );
 
         } else if (cardinal === 'W' || cardinal === 'E') {
@@ -319,16 +319,16 @@ export default class Popover extends PureComponent {
 
             if (ay === START) {
                 return !(
-                       (this.anchorRect.top + pHeight > window.innerHeight    /* would occlude below */ || this.anchorRect.top < 0)                               /* anchor is partially offscreen above */
+                    (this.anchorRect.top + pHeight > window.innerHeight    /* would occlude below */ || this.anchorRect.top < 0)                               /* anchor is partially offscreen above */
                 );
             } else if (ay === MIDDLE) {
                 return !(
-                       (this.anchorRect.top + this.anchorRect.height / 2 - pHeight / 2 < 0                     /* would occlude above */ || this.anchorRect.top + this.anchorRect.height / 2 + pHeight / 2 > window.innerHeight)    /* would occlude below */
+                    (this.anchorRect.top + this.anchorRect.height / 2 - pHeight / 2 < 0                     /* would occlude above */ || this.anchorRect.top + this.anchorRect.height / 2 + pHeight / 2 > window.innerHeight)    /* would occlude below */
                 );
             }
 
             return !(
-                   (this.anchorRect.top - pHeight < 0              /* would occlude above */ || this.anchorRect.bottom > window.innerHeight)    /* anchor is partially offscreen below */
+                (this.anchorRect.top - pHeight < 0              /* would occlude above */ || this.anchorRect.bottom > window.innerHeight)    /* anchor is partially offscreen below */
             );
         }
 
@@ -377,8 +377,8 @@ export default class Popover extends PureComponent {
         const anchor = findDOMNode(this.props.anchor);
 
         const caretAnchor = this.props.caretAnchor
-                            ? findDOMNode(this.props.caretAnchor)
-                            : anchor;
+            ? findDOMNode(this.props.caretAnchor)
+            : anchor;
 
         this.cacheViewportCartography(anchor, caretAnchor);
 
@@ -388,17 +388,16 @@ export default class Popover extends PureComponent {
         const frag = Popover.getAlignmentClassFragment;
 
         this.dialog.$wrapper.className = this.dialog.$wrapper.className.replace(CLASS_REMOVAL_REGEX, '')
-                                         + ` b-popover-anchor-x-${frag(preset.ax)}`
-                                         + ` b-popover-anchor-y-${frag(preset.ay)}`
-                                         + ` b-popover-self-x-${frag(preset.dx)}`
-                                         + ` b-popover-self-y-${frag(preset.dy)}`;
+            + ` b-popover-anchor-x-${frag(preset.ax)}`
+            + ` b-popover-anchor-y-${frag(preset.ay)}`
+            + ` b-popover-self-x-${frag(preset.dx)}`
+            + ` b-popover-self-y-${frag(preset.dy)}`;
 
         const dx = Math.round(this.getNextDialogXPosition(preset));
         const dy = Math.round(this.getNextDialogYPosition(preset));
         const pp = this.props.portalProps;
-        const transform = pp && pp.style && (pp.style.transform || '');
-        this.dialog.$wrapper.style[transformProp] = `${transform} translate(${dx}px, ${dy}px)`;
-        console.log(pp, transform,  this.dialog.$wrapper.style[transformProp]);
+        this.transformParent = pp && pp.style && (pp.style.transform || '');
+        this.dialog.$wrapper.style[transformProp] = `translate(${dx}px, ${dy}px)`;
 
         const cardinal = preset.name[0];
         const longitudinal = cardinal === 'N' || cardinal === 'S';
@@ -412,8 +411,8 @@ export default class Popover extends PureComponent {
     }
 
     matchAnchorWidth = () => {
-      const dialog = this.dialog.$dialog;
-      dialog.style.width = `${this.anchorRect.width}px`;
+        const dialog = this.dialog.$dialog;
+        dialog.style.width = `${this.anchorRect.width}px`;
     }
 
     componentDidMount() {
@@ -432,16 +431,18 @@ export default class Popover extends PureComponent {
 
         return (
             <Portal {...props.portalProps}>
-                <Dialog
-                    {...omit(props, Popover.internalKeys)}
-                    ref={(instance) => (this.dialog = instance)}
-                    before={
-                        cloneElement(props.caretComponent, {
-                            ref: (node) => (this.$caret = node),
-                            className: cx('b-popover-caret', props.caretComponent.props.className),
-                        })
-                    }
-                    className={cx('b-popover', props.className)} />
+                <div style={{ transform: this.transformParent }}>
+                    <Dialog
+                        {...omit(props, Popover.internalKeys)}
+                        ref={(instance) => (this.dialog = instance)}
+                        before={
+                            cloneElement(props.caretComponent, {
+                                ref: (node) => (this.$caret = node),
+                                className: cx('b-popover-caret', props.caretComponent.props.className),
+                            })
+                        }
+                        className={cx('b-popover', props.className)} />
+                </div>
             </Portal>
         );
     }
