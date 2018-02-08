@@ -431,7 +431,7 @@ export default class Popover extends PureComponent {
 
         return (
             <Portal {...props.portalProps}>
-                <div style={{ transform: this.transformParent }}>
+                <div style={{ position: 'absolute', transform: this.transformParent }}>
                     <Dialog
                         {...omit(props, Popover.internalKeys)}
                         ref={(instance) => (this.dialog = instance)}
