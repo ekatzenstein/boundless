@@ -396,7 +396,7 @@ export default class Popover extends PureComponent {
         const dx = Math.round(this.getNextDialogXPosition(preset));
         const dy = Math.round(this.getNextDialogYPosition(preset));
         const pp = this.props.portalProps;
-        const transform = pp && pp.style && (pp.transform || '');
+        const transform = pp && pp.style && (pp.style.transform || '');
         this.dialog.$wrapper.style[transformProp] = `${transform} translate(${dx}px, ${dy}px)`;
         console.log(pp, transform,  this.dialog.$wrapper.style[transformProp]);
 
