@@ -431,18 +431,16 @@ export default class Popover extends PureComponent {
 
         return (
             <Portal {...props.portalProps}>
-                <div style={{ position: 'absolute', transform: this.transformParent }}>
-                    <Dialog
-                        {...omit(props, Popover.internalKeys)}
-                        ref={(instance) => (this.dialog = instance)}
-                        before={
-                            cloneElement(props.caretComponent, {
-                                ref: (node) => (this.$caret = node),
-                                className: cx('b-popover-caret', props.caretComponent.props.className),
-                            })
-                        }
-                        className={cx('b-popover', props.className)} />
-                </div>
+                <Dialog
+                    {...omit(props, Popover.internalKeys)}
+                    ref={(instance) => (this.dialog = instance)}
+                    before={
+                        cloneElement(props.caretComponent, {
+                            ref: (node) => (this.$caret = node),
+                            className: cx('b-popover-caret', props.caretComponent.props.className),
+                        })
+                    }
+                    className={cx('b-popover', props.className)} />
             </Portal>
         );
     }
